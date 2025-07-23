@@ -16,7 +16,6 @@ func HandleStatic(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w,  "Statut not found !", http.StatusNotFound,)
 		return
 	} else {
-		fmt.Println(r.URL.Path)
 		infos, err := os.Stat(r.URL.Path[1:])
 		if err != nil {
 			ErrorHandler(w,  "Statut not found !", http.StatusNotFound,)
