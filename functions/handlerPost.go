@@ -11,29 +11,15 @@ func HandlerPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Récupérer les données du formulaire
-	err := r.ParseForm()
-	if err != nil {
-		ErrorHandler(w, "Bad Request", http.StatusBadRequest)
-		return
-	}
-
-	text, checkText := r.PostForm["text"]
-	banner, checkBanner := r.PostForm["banner"]
-	if !checkText{
-		ErrorHandler(w, "Bad Request", http.StatusBadRequest)
-		return
-	}
-	if !checkBanner{
-		ErrorHandler(w, "Bad Request", http.StatusBadRequest)
-		return
-	}
-	if len(text[0]) > 200 {
+	text:= r.FormValue("text")
+	Banner:= r.FormValue("banner")
+	
+	if len(text) > 1000 {
 		ErrorHandler(w, "input too long", http.StatusBadRequest)
 		return
 	}
 	// Ajouter le dossier et extension pour trouver le fichier correctement
-	bannerPath := "banners/" + banner[0] + ".txt"
+	bannerPath := "banners/" + Banner + ".txt"
 
 	asciiMap := ReadAsciiBanner(bannerPath)
 	if asciiMap == nil {
@@ -41,12 +27,12 @@ func HandlerPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	asciiResult := AsciiRepresentation(text[0], asciiMap)
+	asciiResult := AsciiRepresentation(text, asciiMap)
 
 	data := map[string]string{
 		"Ascii": asciiResult,
 	}
-	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+	tmpl,err:= template.ParseFiles("templates/index.html")
 	err = tmpl.Execute(w, data)
 	if err != nil {
 		ErrorHandler(w, "Error", http.StatusInternalServerError)

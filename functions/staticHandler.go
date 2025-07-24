@@ -1,7 +1,7 @@
 package functions
 
 import (
-	"fmt"
+
 	"net/http"
 	"os"
 	"strings"
