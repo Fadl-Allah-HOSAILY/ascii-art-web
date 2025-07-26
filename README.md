@@ -9,7 +9,7 @@
 
 This web app allows users to:
 
-- ✍️ Enter custom messages (up to **200 characters**)
+- ✍️ Enter custom messages (up to **1000 characters**)
 - 🧾 Choose between fonts: `standard`, `shadow`, `thinkertoy`
 - 🔤 Instantly convert text into **ASCII art** displayed in the browser
 
