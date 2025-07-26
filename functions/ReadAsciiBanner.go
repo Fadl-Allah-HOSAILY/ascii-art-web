@@ -10,7 +10,7 @@ import (
 func ReadAsciiBanner(w http.ResponseWriter, r http.Request, filename string) map[rune][]string {
 	file, err := os.ReadFile(filename)
 	if err != nil {
-		ErrorHandler(w, "Banner error:", http.StatusInternalServerError)
+		ErrorHandler(w, "Banner error:", http.StatusBadRequest)
 		return nil
 	}
 
