@@ -5,12 +5,13 @@ import (
 	"net/http"
 )
 
-// HandlerIndex affiche la page HTML principale
+// Index page handler
 func HandlerIndex(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		ErrorHandler(w, "Error, page not found", http.StatusNotFound)
 		return
 	}
+
 	if r.Method != http.MethodGet {
 		ErrorHandler(w, "Error, method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -22,5 +23,5 @@ func HandlerIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.Execute(w, nil) // Pas besoin de data au départ
+	tmpl.Execute(w, nil)
 }

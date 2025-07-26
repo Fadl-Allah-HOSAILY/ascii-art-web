@@ -8,13 +8,15 @@ import (
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", functions.HandlerIndex)
-	mux.HandleFunc("/ascii-art", functions.HandlerPost)
+	// Route handlers
+	http.HandleFunc("/", functions.HandlerIndex)
+	http.HandleFunc("/ascii-art", functions.HandlerPost)
+	http.HandleFunc("/static/", functions.HandleStatic)
+
+	// Start server
 	log.Println("Server running on: http://localhost:8080")
-	mux.HandleFunc("/static/", functions.HandleStatic)
-	err := http.ListenAndServe(":8080", mux)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
-		log.Fatal("Erreur serveur :", err)
+		log.Fatal("Server error:", err)
 	}
 }

@@ -9,21 +9,17 @@
     <h1>Générateur ASCII Art</h1>
     <form action="/ascii-art" method="POST">
       <label>Texte :</label>
-      <textarea name="text" rows="6" cols="50"  maxlength="1000"></textarea><br />
+      <textarea name="text" rows="6" cols="50" maxlength="1000"></textarea><br />
 
       <label>Bannière :</label><br />
       <input type="radio" name="banner" value="standard" checked />Standard<br />
       <input type="radio" name="banner" value="shadow" /> Shadow<br />
       <input type="radio" name="banner" value="thinkertoy" />Thinkertoy<br /><br />
 
-      <input type="submit" value="Générer" />
+      <button type="submit" class="submit-button">Générer</button>
     </form>
 
     <pre>{{.Ascii}}</pre>
-    
-    {{if .Error}}
-    <div class="error">{{.Error}}</div>
-    {{end}}
 
   </body>
 </html>
