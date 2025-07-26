@@ -35,7 +35,7 @@ asciiArtWeb/
 ├── functions/
 │   └── AsciiRepresentation.go
 │   └── ReadAsciiBanner.go
-│   └── ErrorHandler.go   
+│   └── errorHandler.go   
 │   └── handlerIndex.go  
 │   └── handlerPost.go
 │   └── handerStatic.go    
