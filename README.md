@@ -33,7 +33,13 @@ asciiArtWeb/
 │   ├── shadow.txt
 │   └── thinkertoy.txt
 ├── functions/
-│   └── handlers.go        # Request and logic handlers
+│   └── AsciiRepresentation.go
+│   └── ReadAsciiBanner.go
+│   └── ErrorHandler.go   
+│   └── handlerIndex.go  
+│   └── handlerPost.go
+│   └── handerStatic.go    
+     
 ├── static/
 │   └── style.css          # Frontend styling
 ├── templates/
