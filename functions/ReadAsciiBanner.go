@@ -1,16 +1,16 @@
 package functions
 
 import (
-	"fmt"
+	"net/http"
 	"os"
 	"strings"
 )
 
 // Creating the Map
-func ReadAsciiBanner(filename string) map[rune][]string {
+func ReadAsciiBanner(w http.ResponseWriter, r http.Request, filename string) map[rune][]string {
 	file, err := os.ReadFile(filename)
 	if err != nil {
-		fmt.Println("Error when opening the file!")
+		ErrorHandler(w, "Banner error:", http.StatusInternalServerError)
 		return nil
 	}
 

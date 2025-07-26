@@ -12,8 +12,8 @@ func HandlerPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	text:= r.FormValue("text")
-	banner:= r.FormValue("banner")
+	text := r.FormValue("text")
+	banner := r.FormValue("banner")
 
 	if len(text) > 1000 {
 		ErrorHandler(w, "input too long", http.StatusBadRequest)
@@ -21,7 +21,7 @@ func HandlerPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	bannerPath := "banners/" + banner + ".txt"
-	asciiMap := ReadAsciiBanner(bannerPath)
+	asciiMap := ReadAsciiBanner(w,*r,bannerPath)
 
 	asciiResult := AsciiRepresentation(text, asciiMap)
 

@@ -11,7 +11,7 @@ func AsciiRepresentation(str string, asciiMap map[rune][]string) string {
 	slice := [][]string{}
 
 	for _, word := range words {
-		if len(word) == 0 {
+		if !IsChar(word)  {
 			result += "\n"
 			continue
 		}
@@ -35,4 +35,13 @@ func AsciiRepresentation(str string, asciiMap map[rune][]string) string {
 	}
 
 	return result
+}
+
+func IsChar(s string)bool{
+	for _,r:= range s{
+		if string(r)!=""{
+			return true
+		}
+	}
+	return false
 }
